@@ -16,6 +16,8 @@
  *
  */
 #include <iostream>
+//NEW COMMENT: ADDING IOMANIP FOR FORMMATING BECUSE IT HURTS TO LOOK AT THE CURRENT ONE!!!!!!!
+#include <iomanip>
 using namespace std;
 //from here to main general housekeeping getting laying the groundwork for the program
 //creating the struct, global variables, and prototypes
@@ -60,7 +62,7 @@ int main()
 	cout << "Constant Current\n" << endl;
 	printResults(&cc, StepT);
 
-	cout << "Constant Voltage" << endl;
+	cout << "\n\nConstant Voltage" << endl;
 	printResults(&rc, StepT);
 
 	freeCapacitor(&cc);
@@ -116,10 +118,20 @@ void solveConstantVoltage (Capacitor *cap, int n)
 //now with a new flavor of printf i have to learn :*)
 void printResults (Capacitor *cap, int n)
 {
+
+	//NEW COMMENT: I HAD TO FORMAT IT, 
+	//IT WAS HURRTING MY EYES AND LEARNT PRINTF (this iomaip) IN THE MEANTIME
+	
+	cout << left << setw(15) << "Times" << setw(15) << "Voltages" << setw(15) << "Currents" << endl;
+
+	cout << scientific << setprecision(4);
+
 	int i = 0;
 	while (i < n)
 	{
-		cout << cap->time[i] << "  " << cap->voltage[i] << "  " << cap->current[i] << endl;
+		cout << left << setw(15) <<cap->time[i] 
+			     << setw(15) << cap->voltage[i] 
+			     << setw(15) << cap->current[i] << endl;
 		i += 200;
 	}
 }
